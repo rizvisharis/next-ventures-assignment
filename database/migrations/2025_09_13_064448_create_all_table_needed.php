@@ -56,10 +56,10 @@ return new class extends Migration
             $table->foreignId('order_id')->constrained()->cascadeOnDelete();
             $table->decimal('amount', 12, 2);
             $table->enum('status', ['pending', 'processing', 'completed', 'failed'])->default('pending');
-            $table->json('meta')->nullable();
+            $table->enum('refund_type', ['partial', 'full'])->nullable();
             $table->timestamps();
 
-            $table->index('idempotency_key');
+            $table->index(['order_id', 'status']);
         });
     }
 

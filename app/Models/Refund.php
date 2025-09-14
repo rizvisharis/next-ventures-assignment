@@ -14,7 +14,7 @@ class Refund extends Model
         'order_id',
         'amount',
         'status',
-        'meta'
+        'refund_type'
     ];
 
     protected $casts = [
