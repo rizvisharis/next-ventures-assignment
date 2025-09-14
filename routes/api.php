@@ -1,8 +1,9 @@
 <?php
 
-use App\Http\Controllers\OrderRefundController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\MetricsController;
+use App\Http\Controllers\OrderRefundController;
 
 /*
 |--------------------------------------------------------------------------
@@ -21,3 +22,4 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 
 
 Route::post('/orders/{orderId}', [OrderRefundController::class, 'refund']);
+Route::get('/metrics', [MetricsController::class, 'index']);

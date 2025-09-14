@@ -18,7 +18,6 @@ class Refund extends Model
     ];
 
     protected $casts = [
-        'meta' => 'array',
         'amount' => 'float',
     ];
 

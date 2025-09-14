@@ -11,7 +11,6 @@ class LeaderboardService
         return config('app.env') . ':leaderboard:customers';
     }
 
-    
     public static function addRevenue(int $customerId, float $amount): void
     {
         Redis::connection()->zIncrBy(self::key(), $amount, (string)$customerId);
@@ -24,6 +23,6 @@ class LeaderboardService
 
     public static function top(int $limit = 10): array
     {
-        return Redis::connection()->zRevRangeWithScores(self::key(), 0, $limit - 1);
+        return Redis::connection()->zrevrange(self::key(), 0, $limit - 1, ['withscores' => true]);
     }
 }
